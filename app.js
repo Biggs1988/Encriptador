@@ -37,6 +37,9 @@ function procesar(tipo) {
 }
 
 function encriptarTexto(texto) {
+  if (texto === "amas") {
+    return "si, amo a Angela, la mujer con la que quiero compartir mi vida";
+  }
   return texto.replace(/[eiou]/g, match => encriptacion[match]);
 }
 
