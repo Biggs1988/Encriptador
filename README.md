@@ -9,3 +9,11 @@ Ahora tiene links en botones de redes sociales en el footer
 Agrega boton de copiar y de limpiar
 Agrega regla de solo uso de minusculas
 Tiene un fondo de los Blood Angels de Warhammer 40K (ñoñerias personales XD)
+
+Ultima actualizacion
+
+Se agrego un boton de limpiar
+Se agrego un easter egg
+Se reviso el diseño en el codigo CSS
+No soy muy bueno en estética, creo que Backend es lo mío xD
+Espero sea de su agrado
