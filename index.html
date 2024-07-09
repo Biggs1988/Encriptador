@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Encriptosaurio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-image: url('space_marine_bg.jpg');">
+  <header>
+    <div class="title-container">
+      <h1>El Encriptosaurio</h1>
+    </div>
+  </header>
+  
+  <main class="container">
+    <div class="input-container">
+      <textarea id="textoInput" rows="4" placeholder="Ingrese el texto para encriptar o desencriptar"></textarea>
+      <textarea id="textoResultado" rows="4" placeholder="Resultado" readonly></textarea>
+    </div>
+    
+    <div class="buttons">
+      <button onclick="encriptarTexto()">Encriptar</button>
+      <button onclick="desencriptarTexto()">Desencriptar</button>
+    </div>
+  </main>
+
+  <button id="copiarBtn" onclick="copiarResultado()">Copiar resultado</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
