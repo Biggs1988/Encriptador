@@ -1,71 +1,68 @@
 const encriptacion = {
-    'e': 'enter',
-    'i': 'imes',
-    'a': 'ai',
-    'o': 'ober',
-    'u': 'ufat'
-  };
+  'e': 'enter',
+  'i': 'imes',
+  'a': 'ai',
+  'o': 'ober',
+  'u': 'ufat'
+};
+
+function procesar(tipo) {
+  let texto = document.getElementById("textoInput").value;
   
-  function encriptarTexto() {
-    let texto = document.getElementById("textoInput").value.toLowerCase();
-    let resultado = "";
-  
-    if (detectarEncriptado(texto)) {
-      alert("El texto ya está encriptado según las reglas.");
-      return;
-    }
-  
-    for (let char of texto) {
-      if (encriptacion[char]) {
-        resultado += encriptacion[char];
-      } else {
-        resultado += char;
-      }
-    }
-  
-    document.getElementById("textoResultado").value = resultado;
+  // Validación de solo letras minúsculas
+  if (/[A-Z]/.test(texto)) {
+    alert("Utilice solo minúsculas");
+    return;
   }
   
-  function desencriptarTexto() {
-    let texto = document.getElementById("textoInput").value.toLowerCase();
-    let resultado = "";
-  
+  texto = texto.toLowerCase();
+  let resultado = "";
+
+  if (tipo === 'encriptar') {
     if (!detectarEncriptado(texto)) {
-      alert("El texto no está encriptado según las reglas.");
+      resultado = encriptarTexto(texto);
+    } else {
+      alert("Texto encriptado");
       return;
     }
-  
-    // Reemplazar cada valor de encriptación por su correspondiente letra
-    resultado = texto.replace(/enter/g, "e")
-                    .replace(/imes/g, "i")
-                    .replace(/ai/g, "a")
-                    .replace(/ober/g, "o")
-                    .replace(/ufat/g, "u");
-  
-    document.getElementById("textoResultado").value = resultado;
+  } else if (tipo === 'desencriptar') {
+    if (detectarEncriptado(texto)) {
+      resultado = desencriptarTexto(texto);
+    } else {
+      alert("El texto no está encriptado");
+      return;
+    }
   }
-  
-  function detectarEncriptado(texto) {
-    // Comprobar si el texto contiene alguna de las palabras de encriptación
-    return Object.values(encriptacion).some(encriptado => texto.includes(encriptado));
+
+  document.getElementById("textoResultado").value = resultado;
+}
+
+function encriptarTexto(texto) {
+  return texto.replace(/[eiou]/g, match => encriptacion[match]);
+}
+
+function desencriptarTexto(texto) {
+  let resultado = texto;
+  for (let key in encriptacion) {
+    if (encriptacion.hasOwnProperty(key)) {
+      resultado = resultado.replace(new RegExp(encriptacion[key], 'g'), key);
+    }
   }
-  
-  function copiarResultado() {
-    let resultado = document.getElementById("textoResultado");
-  
-    // Crear un elemento de texto temporal
-    let tempTextArea = document.createElement("textarea");
-    tempTextArea.value = resultado.value;
-    document.body.appendChild(tempTextArea);
-  
-    // Seleccionar y copiar el contenido del textarea temporal
-    tempTextArea.select();
-    document.execCommand("copy");
-  
-    // Eliminar el textarea temporal
-    document.body.removeChild(tempTextArea);
-  
-    // Mostrar alerta de éxito
-    alert("¡Texto copiado!");
-  }
-  
+  return resultado;
+}
+
+function detectarEncriptado(texto) {
+  return Object.values(encriptacion).some(encriptado => texto.includes(encriptado));
+}
+
+function copiarTexto() {
+  const textoResultado = document.getElementById("textoResultado");
+  textoResultado.select();
+  document.execCommand("copy");
+  alert("Texto copiado al portapapeles");
+}
+
+function limpiarTexto() {
+  document.getElementById("textoInput").value = "";
+  document.getElementById("textoResultado").value = "";
+}

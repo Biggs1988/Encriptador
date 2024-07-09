@@ -6,26 +6,40 @@
   <title>El Encriptosaurio</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-image: url('space_marine_bg.jpg');">
+<body>
   <header>
     <div class="title-container">
       <h1>El Encriptosaurio</h1>
     </div>
   </header>
-  
+
   <main class="container">
     <div class="input-container">
-      <textarea id="textoInput" rows="4" placeholder="Ingrese el texto para encriptar o desencriptar"></textarea>
-      <textarea id="textoResultado" rows="4" placeholder="Resultado" readonly></textarea>
+      <textarea id="textoInput" placeholder="Ingrese el texto para encriptar o desencriptar"></textarea>
+      <textarea id="textoResultado" placeholder="Resultado" readonly></textarea>
     </div>
     
     <div class="buttons">
-      <button onclick="encriptarTexto()">Encriptar</button>
-      <button onclick="desencriptarTexto()">Desencriptar</button>
+      <button onclick="procesar('encriptar')">Encriptar</button>
+      <button onclick="procesar('desencriptar')">Desencriptar</button>
+      <button onclick="copiarTexto()">Copiar</button>
+      <button onclick="limpiarTexto()">Limpiar</button>
     </div>
   </main>
 
-  <button id="copiarBtn" onclick="copiarResultado()">Copiar resultado</button>
+  <footer class="footer">
+    <div class="social-buttons">
+      <a href="https://www.linkedin.com/in/víctor-manuel-veloso-uribe-210043122" class="social-button" target="_blank">
+        <img src="images/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="https://www.instagram.com/senor_diablou/" class="social-button" target="_blank">
+        <img src="images/instagram.png" alt="Instagram">
+      </a>
+      <a href="https://github.com/Biggs1988/Encriptador" class="social-button" target="_blank">
+        <img src="images/github.png" alt="GitHub">
+      </a>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
 </body>
