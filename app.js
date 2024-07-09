@@ -10,12 +10,11 @@ function procesar(tipo) {
   let texto = document.getElementById("textoInput").value;
   
   // Validación de solo letras minúsculas
-  if (/[A-Z]/.test(texto)) {
-    alert("Utilice solo minúsculas");
+  if (/[^a-zñ\s]/.test(texto)) {
+    alert("Utilice solo letras minúsculas");
     return;
   }
   
-  texto = texto.toLowerCase();
   let resultado = "";
 
   if (tipo === 'encriptar') {
@@ -60,6 +59,7 @@ function copiarTexto() {
   textoResultado.select();
   document.execCommand("copy");
   alert("Texto copiado al portapapeles");
+  document.getElementById("botonCopiar").innerText = "copiar resultado";
 }
 
 function limpiarTexto() {
